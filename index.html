@@ -4,19 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>月湖退伍日期倒數</title>
+  <title>月湖退役日期倒數</title>
   <script src="https://unpkg.com/vue@2.2.6"></script>  
-  <script src="main.js"></script>  
 </head>
 <body>
   <div id="app">
-    <h1>月湖退伍日期倒數</h1>
+    <h1>月湖退役日期倒數</h1>
     <ul>
-      <li>入伍日期：2016-10-18</li>
-      <li>退伍日期：2017-10-03</li>
+      <li>徵召日期：2016-10-18</li>
+      <li>退役日期：2017-10-03</li>
       <li>已經服役：{{ already_days }}</li>
     </ul>
-    <h2>倒數 {{ remaining_days }} 天</h2>
+    <h2>倒數 {{ remaining_days }} 天</h2>  
   </div>
   <script>
     window.onload = function () {
