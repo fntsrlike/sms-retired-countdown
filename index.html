@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>月湖退役日期倒數</title>
-  <script src="https://unpkg.com/vue@2.2.6"></script>  
+  <script src="https://unpkg.com/vue@2.2.6"></script>
 </head>
 <body>
   <div id="app">
@@ -15,17 +15,20 @@
       <li>退役日期：2017-10-03</li>
       <li>已經服役：{{ already_days }}</li>
     </ul>
-    <h2>倒數 {{ remaining_days }} 天</h2>  
+    <h2>倒數 {{ remaining_days }} 天</h2>
   </div>
   <script>
     window.onload = function () {
+      const secondsPerMinute = 60
+      const millisecondsPereconds = 1000
       let inDate = new Date('2016-10-18')
       let outDate = new Date('2017-10-03')
-      let now = Date.now()
+      let now = new Date()
       let unit = 1000*3600*24
+      let timezoneOffset = now.getTimezoneOffset() * secondsPerMinute * millisecondsPereconds
 
-      let already_days = Math.floor((now - inDate) / unit)
-      let remaining_days = Math.ceil((outDate - now) / unit)
+      let already_days = Math.floor((now - inDate + timezoneOffset) / unit)
+      let remaining_days = Math.ceil((outDate - now + timezoneOffset) / unit)
 
       new Vue({
           el: '#app',
