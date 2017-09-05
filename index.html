@@ -13,26 +13,27 @@
     <ul>
       <li>徵召日期：2016-10-18</li>
       <li>退役日期：2017-10-03</li>
-      <li>已經服役：{{ already_days }}</li>
+      <li>已經服役：{{ already_days }} / {{days}}</li>
     </ul>
     <h2>倒數 {{ remaining_days }} 天</h2>
+
   </div>
   <script>
     window.onload = function () {
-      const secondsPerMinute = 60
-      const millisecondsPereconds = 1000
-      let inDate = new Date('2016-10-18')
-      let outDate = new Date('2017-10-03')
-      let now = new Date()
-      let unit = 1000*3600*24
-      let timezoneOffset = now.getTimezoneOffset() * secondsPerMinute * millisecondsPereconds
+      const millisecondsPerDay = 24 * 60 * 60 * 1000
 
-      let already_days = Math.floor((now - inDate + timezoneOffset) / unit)
-      let remaining_days = Math.ceil((outDate - now + timezoneOffset) / unit)
+      let inDate = (new Date(2016, 9, 18)).getTime()
+      let outDate = (new Date(2017, 9, 3)).getTime()
+      let now = (new Date()).getTime()
+
+      let days = (outDate - inDate) / millisecondsPerDay
+      let already_days = Math.floor((now - inDate ) / millisecondsPerDay)
+      let remaining_days = Math.ceil((outDate - now ) / millisecondsPerDay)
 
       new Vue({
           el: '#app',
           data: {
+              days: days,
               already_days: already_days,
               remaining_days: remaining_days
           }
